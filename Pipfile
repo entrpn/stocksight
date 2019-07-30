@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+elasticsearch = "<6.0.0,>=5.0.0"
+requests = "*"
+nltk = "*"
+tweepy = "*"
+beautifulsoup4 = "*"
+textblob = "*"
+vaderSentiment = "*"
+
+[requires]
+python_version = "3.7"

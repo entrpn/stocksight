@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
     # parse cli args
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--index", metavar="INDEX", default="stocksight",
+    parser.add_argument("-i", "--index", metavar="INDEX", default="stocksight_stockprice",
                         help="Index name for Elasticsearch (default: stocksight)")
     parser.add_argument("-d", "--delindex", action="store_true",
                         help="Delete existing Elasticsearch index first")

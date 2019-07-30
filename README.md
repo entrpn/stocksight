@@ -139,3 +139,18 @@ optional arguments:
   -q, --quiet           Run quiet with no message output
   -V, --version         Prints version and exits
   ```
+
+### ACTIVATE ENVIRONMENT
+
+Install pipenv
+
+```sudo pip install pipenv```
+
+Launch
+
+```pipenv shell```
+
+Install
+
+```pipenv install -r requirements.txt```
+
