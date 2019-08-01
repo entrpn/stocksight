@@ -79,10 +79,12 @@ Start mining and analyzing News headlines and following headline links and scrap
 $ python sentiment.py -n TSLA --followlinks --debug
 ```
 
+```python sentiment.py -k AMD,EPYC,RYZEN --debug```
+
 Run stockprice.py to add stock prices to 'stocksight' index in Elasticsearch
 
 ```sh
-$ python stockprice.py -s TSLA --debug
+$ python stockprice.py -s AMD --debug
 ```
 
 Load 'stocksight' index in Kibana and import export.json file for visuals/dashboard.

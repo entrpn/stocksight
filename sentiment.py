@@ -754,6 +754,10 @@ if __name__ == '__main__':
                         logger.info("Sleeping for a random amount of time and retrying...")
                         time.sleep(randint(1,10))
                         continue
+                    except ReadTimeoutError as err:
+                        logger.warning("ReadTimeoutError")
+                        time.sleep(randint(1,10))
+                        continue
                     except KeyboardInterrupt:
                         logger.info("Ctrl-c keyboard interrupt, exiting...")
                         stream.disconnect()
