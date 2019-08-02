@@ -1,15 +1,13 @@
+import argparse
+from bs4 import BeautifulSoup
+import requests
+import time
+import logging
+from MarketwatchNewsScraper import MarketwatchNewsScraper
+from SentimentAnalyzer import SentimentAnalyzer
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, './src')
-
-from MarketwatchNewsScraper import MarketwatchNewsScraper
-
-import logging
-
-import requests
-from bs4 import BeautifulSoup
-
-import argparse
 
 
 class NewsScraper:
@@ -20,15 +18,33 @@ class NewsScraper:
         self.frequency = frequency
 
     def scrape_site(self):
-        
+
         marketwatchScraper = MarketwatchNewsScraper()
+        newsHeadlines = []
+
+        sentimentAnalyzer = SentimentAnalyzer()
 
         while True:
-          marketwatchScraper.scrape()
+            headlines = marketwatchScraper.scrape()
 
-          logger.info("Will get news headlines again in %s sec..." %
+            for headline in headlines:
+                if headline not in newsHeadlines:
+                    print('headline:', headline)
+                    newsHeadlines.append(headline)
+                    sentimentAnalyzer.google_analyze(headline)
+
+            # for headline in newsHeadlines:
+            #         #print('headline: ', headline)
+            #     sentimentAnalyzer.google_analyze(headline)
+            # # print('headline: ', newsHeadlines[0])
+            # # sentimentAnalyzer.google_analyze(newsHeadlines[0])
+            logger.info("Will get news headlines again in %s sec..." %
                         self.frequency)
-          time.sleep(self.frequency)
+            print()
+            print()
+            print()
+            print()
+            time.sleep(self.frequency)
 
 
 if __name__ == "__main__":

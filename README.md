@@ -156,3 +156,6 @@ Install
 
 ```pipenv install -r requirements.txt```
 
+Google creds
+
+```export GOOGLE_APPLICATION_CREDENTIALS=/Users/hidden/MyApps/python/stocksight/chatbot-7b96c-1ae251c27424.json```

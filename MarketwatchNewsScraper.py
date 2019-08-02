@@ -17,7 +17,7 @@ class MarketwatchNewsScraper:
     if summaries:
       for summary in summaries:
         headlines.append(summary.getText())
-
-    print(headlines)
+        
+    return headlines
 
 
