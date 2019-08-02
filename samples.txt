@@ -1,0 +1,30 @@
+<div class="article__content">
+            <span class="article__column updated">
+Updated            </span>
+                    <h3 class="article__headline"><a class="link" href="https://www.marketwatch.com/story/asian-markets-sink-as-us-china-trade-tensions-ramp-back-up-2019-08-01?mod=markets">Asian markets sink as U.S.-China trade tensions ramp back up</a></h3>
+            
+
+            <div class="content--secondary">
+                    <ul class="list list--tickers">
+                            <li class="list__item ticker">
+                                <bg-quote class="negative" channel="/zigman2/quotes/210598127/delayed" data-last-stamp="1564776370000">
+                                    <a class="ticker__link" target="_blank" href="https://www.marketwatch.com/investing/index/shcomp?countrycode=cn&amp;mod=markets">
+                                        <span class="ticker__symbol">CN:SHCOMP</span>
+                                        <span class="ticker__change">
+                                            <bg-quote field="percentchange" format="0,0.00%" channel="/zigman2/quotes/210598127/delayed" data-last-stamp="1564776370000" class="negative">-1.75%</bg-quote>
+                                        </span>
+                                        <i class="icon--"></i>
+                                    </a>
+                                </bg-quote>
+                            </li>
+                    </ul>
+                                    
+            </div>
+            <ul class="article__details">
+                <li data-est="2019-08-01T23:34:52" class="article__timestamp">Aug. 1, 2019 at 11:34 p.m. ET</li>
+
+                    <li class="article__author">by Marketwatch</li>
+                
+                
+            </ul>
+        </div>

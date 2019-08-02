@@ -20,18 +20,23 @@ class NewsScraper:
     def scrape_site(self):
 
         marketwatchScraper = MarketwatchNewsScraper()
-        newsHeadlines = []
+        all_articles = []
 
         sentimentAnalyzer = SentimentAnalyzer()
 
         while True:
-            headlines = marketwatchScraper.scrape()
+            articles = marketwatchScraper.scrape()
 
-            for headline in headlines:
-                if headline not in newsHeadlines:
+            for article in articles:
+                if article not in all_articles:
+                    headline = article.headline
                     print('headline:', headline)
-                    newsHeadlines.append(headline)
-                    sentimentAnalyzer.google_analyze(headline)
+                    print('url', article.url)
+                    all_articles.append(article)
+                    if len(headline.split()) >= 20:
+                        sentimentAnalyzer.google_analyze(headline)
+                    else:
+                        sentimentAnalyzer.analyze(headline)
 
             # for headline in newsHeadlines:
             #         #print('headline: ', headline)

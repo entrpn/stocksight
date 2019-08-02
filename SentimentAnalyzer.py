@@ -15,8 +15,6 @@ class SentimentAnalyzer:
         self.client = language.LanguageServiceClient()
 
     def classify_content(self, text):
-        if len(text.split()) <= 20:
-            return
 
         if isinstance(text, six.binary_type):
             text = text.decode('utf-8')
@@ -81,6 +79,9 @@ class SentimentAnalyzer:
         analyzer = SentimentIntensityAnalyzer()
         text_vs = analyzer.polarity_scores(text)
 
+        print('text_vs:', text_vs)
+        print('compound:', text_vs['compound'])
+
         if text_tb.sentiment.polarity <= 0 and text_vs['compound'] <= -0.5:
             sentiment = "negative"  # very negative
         elif text_tb.sentiment.polarity <= 0 and text_vs['compound'] <= -0.1:
@@ -92,7 +93,7 @@ class SentimentAnalyzer:
         elif text_tb.sentiment.polarity > 0 and text_vs['compound'] >= 0.1:
             sentiment = "positive"  # very positive
         else:
-            sentiment = "neutral"
+            sentiment = "unknown"
 
         print(text)
         # calculate average polarity from TextBlob and VADER
