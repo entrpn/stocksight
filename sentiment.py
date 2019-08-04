@@ -199,7 +199,7 @@ class TweetStreamListener(StreamListener):
 
 
 class NewsHeadlineListener:
-    def __init__(self, url=None, frequency=120):
+    def __init__(self, url=None, frequency=120,override_keywords=False):
         self.url = url
         self.headlines = []
         self.followedlinks = []
@@ -237,9 +237,11 @@ class NewsHeadlineListener:
                         if t in tokens:
                             tokenspass = True
                             break
+
                     if not tokenspass:
-                        logger.info("Text does not contain token from required list, not adding")
-                        continue
+                        if not override_keywords:
+                            logger.info("Text does not contain token from required list, not adding")
+                            continue
 
                     # get sentiment values
                     polarity, subjectivity, sentiment = sentiment_analysis(htext)
@@ -480,6 +482,8 @@ if __name__ == '__main__':
                         help="Use keywords to search for in Tweets instead of feeds. "
                              "Separated by comma, case insensitive, spaces are ANDs commas are ORs. "
                              "Example: TSLA,'Elon Musk',Musk,Tesla,SpaceX")
+    parser.add_argument("-ok","--override_keywords",action="store_true",
+                        help="Override keywords and insert everything")
     parser.add_argument("-u", "--url", metavar="URL",
                         help="Use twitter users from any links in web page at url")
     parser.add_argument("-f", "--file", metavar="FILE",
@@ -701,7 +705,7 @@ if __name__ == '__main__':
             logger.info("Scraping news for %s from %s ..." % (args.newsheadlines, url))
 
             # create instance of NewsHeadlineListener
-            newslistener = NewsHeadlineListener(url, args.frequency)
+            newslistener = NewsHeadlineListener(url, args.frequency,args.override_keywords)
         except KeyboardInterrupt:
             print("Ctrl-c keyboard interrupt, exiting...")
             sys.exit(0)
