@@ -14,6 +14,8 @@ tweepy = "*"
 beautifulsoup4 = "*"
 textblob = "*"
 vaderSentiment = "*"
+google-cloud-storage = "*"
+google-cloud-language = "*"
 
 [requires]
 python_version = "3.7"

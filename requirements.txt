@@ -5,3 +5,5 @@ tweepy
 beautifulsoup4
 textblob
 vaderSentiment
+google-cloud-storage
+google-cloud-language
