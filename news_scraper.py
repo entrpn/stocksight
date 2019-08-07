@@ -33,10 +33,10 @@ class NewsScraper:
                     print('headline:', headline)
                     print('url', article.url)
                     all_articles.append(article)
-                    if len(headline.split()) >= 20:
-                        sentimentAnalyzer.google_analyze(headline)
-                    else:
-                        sentimentAnalyzer.analyze(headline)
+                    # if len(headline.split()) >= 20:
+                    #     sentimentAnalyzer.google_analyze(headline)
+                    # else:
+                    sentimentAnalyzer.analyze(headline)
 
             # for headline in newsHeadlines:
             #         #print('headline: ', headline)

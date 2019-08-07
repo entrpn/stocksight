@@ -204,6 +204,9 @@ class NewsHeadlineListener:
         self.headlines = []
         self.followedlinks = []
         self.frequency = frequency
+        self.neutral = 0
+        self.positive = 0
+        self.nagative = 0
 
         while True:
             new_headlines = self.get_news_headlines(self.url)
@@ -245,6 +248,13 @@ class NewsHeadlineListener:
 
                     # get sentiment values
                     polarity, subjectivity, sentiment = sentiment_analysis(htext)
+
+                    if sentiment is 'neutral':
+                        self.neutral+=1
+                    else if sentiment is 'positive':
+                        self.positive+=1
+                    else if sentiment is 'negative':
+                        self.negative+=1
 
                     logger.info("Adding news headline to elasticsearch")
                     # add news headline data and sentiment info to elasticsearch
@@ -410,6 +420,13 @@ def sentiment_analysis(text):
             sentiment = "positive"  # very positive
         else:
             sentiment = "neutral"
+
+    if sentiment is 'neutral':
+        self.neutral+=1
+    else if sentiment is 'positive':
+        self.positive+=1
+    else if sentiment is 'negative':
+        self.negative+=1
 
     # calculate average polarity from TextBlob and VADER
     polarity = (text_tb.sentiment.polarity + text_vs['compound']) / 2

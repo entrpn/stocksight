@@ -11,9 +11,6 @@ import six
 
 class SentimentAnalyzer:
 
-    def __init__(self):
-        self.client = language.LanguageServiceClient()
-
     def classify_content(self, text):
 
         if isinstance(text, six.binary_type):
@@ -31,6 +28,7 @@ class SentimentAnalyzer:
             print(u'{:<16}: {}'.format('confidence', category.confidence))
 
     def google_analyze(self, text):
+        self.client = language.LanguageServiceClient()
             # Instantiates a client
         self.classify_content(text)
         # client = language.LanguageServiceClient()
@@ -81,6 +79,7 @@ class SentimentAnalyzer:
 
         print('text_vs:', text_vs)
         print('compound:', text_vs['compound'])
+        print('polarity: ',text_tb.sentiment.polarity)
 
         if text_tb.sentiment.polarity <= 0 and text_vs['compound'] <= -0.5:
             sentiment = "negative"  # very negative
