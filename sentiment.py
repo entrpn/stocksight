@@ -414,13 +414,6 @@ def sentiment_analysis(text):
         else:
             sentiment = "neutral"
 
-    if sentiment is 'neutral':
-        self.neutral+=1
-    else if sentiment is 'positive':
-        self.positive+=1
-    else if sentiment is 'negative':
-        self.negative+=1
-
     # calculate average polarity from TextBlob and VADER
     polarity = (text_tb.sentiment.polarity + text_vs['compound']) / 2
     # output sentiment polarity
